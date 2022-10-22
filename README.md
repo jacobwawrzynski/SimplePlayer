@@ -1,2 +1,2 @@
-# MusicPlayer
-Simple player with custom options.
+# SimplePlayer
+Simple .mp3/.wav player with custom options.
