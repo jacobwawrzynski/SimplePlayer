@@ -12,19 +12,22 @@
 <body>
     <div class="player">
  
-        <!-- Define the section for displaying details -->
         <div class="details">
-          <div class="track-name">Track Name</div>
+          <div class="track-name">---------</div>
         </div>
      
-        <!-- Define the section for displaying track buttons -->
         <div class="buttons">
           <div class="playpause-track" onclick="playpauseTrack()">
             <i class="fa fa-play-circle fa-5x"></i>
           </div>
+          <input type="text" class="speed-input">
+          <div class="speed" onclick="changeSpeed()">
+            <i class="fa fa-fast-forward fa-3x"></i>
+          </div>
+
         </div>
      
-        <!-- Define the section for displaying the seek slider-->
+        <!--SEEK BAR-->
         <div class="slider_container">
           <div class="current-time">00:00</div>
           <input type="range" min="1" max="100"
@@ -32,7 +35,7 @@
           <div class="total-duration">00:00</div>
         </div>
      
-        <!-- Define the section for displaying the volume slider-->
+        <!--VOLUME BAR-->
         <div class="slider_container">
           <i class="fa fa-volume-down"></i>
           <input type="range" min="1" max="100"
