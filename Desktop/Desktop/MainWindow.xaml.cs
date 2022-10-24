@@ -29,7 +29,7 @@ namespace Desktop
         public MainWindow()
         {
             InitializeComponent();
-
+            this.Topmost = true;
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
@@ -99,6 +99,16 @@ namespace Desktop
         private void Grid_MouseWheel(object sender, MouseWheelEventArgs e)
         {
             mePlayer.Volume += (e.Delta > 0) ? 0.1 : -0.1;
+        }
+
+        private void FastForward_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = mediaPlayerIsPlaying;
+        }
+
+        private void FastForward_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            mePlayer.SpeedRatio = Convert.ToDouble(Speed_Textbox.Text);
         }
     }
 }

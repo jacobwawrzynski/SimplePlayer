@@ -6,19 +6,42 @@
         xmlns:local="clr-namespace:Desktop"
         mc:Ignorable="d"
         Title="MainWindow" 
-        Height="300" 
+        Height="200" 
         Width="600"
         Background="SeaGreen"
-        ResizeMode="NoResize"
+        ResizeMode="CanMinimize"
         >
     <Window.CommandBindings>
-        <CommandBinding Command="ApplicationCommands.Open" CanExecute="Open_CanExecute" Executed="Open_Executed" />
-        <CommandBinding Command="MediaCommands.Play" CanExecute="Play_CanExecute" Executed="Play_Executed" />
-        <CommandBinding Command="MediaCommands.Pause" CanExecute="Pause_CanExecute" Executed="Pause_Executed" />
+        <CommandBinding 
+            Command="ApplicationCommands.Open" 
+            CanExecute="Open_CanExecute" 
+            Executed="Open_Executed" />
+        <CommandBinding 
+            Command="MediaCommands.Play" 
+            CanExecute="Play_CanExecute" 
+            Executed="Play_Executed" />
+        <CommandBinding 
+            Command="MediaCommands.Pause" 
+            CanExecute="Pause_CanExecute" 
+            Executed="Pause_Executed" />
+        <CommandBinding 
+            Command="MediaCommands.FastForward" 
+            CanExecute="FastForward_CanExecute"
+            Executed="FastForward_Executed"
+             />
+        
     </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Command="ApplicationCommands.Open"
+              Gesture="CTRL+A" />
+        <KeyBinding Command="MediaCommands.Play"
+              Gesture="CTRL+Z" />
+        <KeyBinding Command="MediaCommands.Pause"
+              Gesture="CTRL+X" />
+    </Window.InputBindings>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition />
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -53,6 +76,21 @@
                     VerticalAlignment="Top"
                     Margin="150,10">
             </Button>
+            <TextBox x:Name="Speed_Textbox"
+                FontSize="35"
+                FontWeight="Bold"
+                Width="80" 
+                Margin="230,16,290,16"/>
+            <Button Command="MediaCommands.FastForward"
+                    Width="60"
+                    Height="60"
+                    Content="⏯️"
+                    FontSize="40"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Margin="315,10,0,0"
+                    >
+            </Button>
         </Grid>
 
         <MediaElement Name="mePlayer"
@@ -82,12 +120,6 @@
                         Thumb.DragStarted="sliProgress_DragStarted"
                         Thumb.DragCompleted="sliProgress_DragCompleted"
                         ValueChanged="sliProgress_ValueChanged" />
-            </StatusBarItem>
-            <StatusBarItem Grid.Row="2">
-                <ProgressBar Name="pbVolume"
-                             Width="50" Height="12"
-                             Maximum="1"
-                             Value="{Binding ElementName=mePlayer, Path=Volume}" />
             </StatusBarItem>
         </StatusBar>
     </Grid>
