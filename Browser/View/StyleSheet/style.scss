@@ -1,0 +1,125 @@
+body {
+background-color: lightseagreen;
+}
+
+.player {
+    height: 95vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.details {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.now-playing {
+    font-size: 1rem;
+}
+
+.track-name {
+    font-size: 3rem;
+}
+
+.track-artist {
+    font-size: 1.5rem;
+}
+
+// BUTTONS
+.buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.playpause-track {
+    padding: 25px;
+    opacity: 0.8;
+    transition: opacity .2s;
+
+    &:hover {
+        opacity: 1.0;
+    }
+}
+
+.speed-input {
+    width: 50px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+
+    &:focus, &:active {
+        outline: none;
+    }
+}
+
+.speed {
+    i {
+        margin-left: 20px;
+    }
+}
+
+// SLIDERS
+.slider_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// SEEK BAR
+.seek_slider, .volume_slider {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 5px;
+    background: black;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+
+    &:hover {
+        opacity: 1.0;
+    }
+}
+
+.seek_slider::-webkit-slider-thumb,
+.volume_slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: white;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.current-time,
+.total-duration {
+    padding: 10px;
+}
+
+.seek_slider {
+    width: 600px;
+}
+
+// VOLUME BAR
+.volume_slider {
+    width: 60%;
+}
+
+i.fa-volume-down,
+i.fa-volume-up {
+    padding: 10px;
+}
+
+i.fa-play-circle,
+i.fa-pause-circle {
+    cursor: pointer;
+}
