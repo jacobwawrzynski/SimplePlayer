@@ -10,7 +10,7 @@
         Width="600"
         Background="SeaGreen"
         ResizeMode="CanMinimize"
-        >
+        Loaded="Window_Loaded" Topmost="True">
     <Window.CommandBindings>
         <CommandBinding 
             Command="ApplicationCommands.Open" 
@@ -27,17 +27,16 @@
         <CommandBinding 
             Command="MediaCommands.FastForward" 
             CanExecute="FastForward_CanExecute"
-            Executed="FastForward_Executed"
-             />
-        
+            Executed="FastForward_Executed"/>
+
     </Window.CommandBindings>
     <Window.InputBindings>
         <KeyBinding Command="ApplicationCommands.Open"
-              Gesture="CTRL+A" />
+              Gesture="CTRL+SHIFT+A" />
         <KeyBinding Command="MediaCommands.Play"
-              Gesture="CTRL+Z" />
+              Gesture="F11" />
         <KeyBinding Command="MediaCommands.Pause"
-              Gesture="CTRL+X" />
+              Gesture="CTRL+SHIFT+X" />
     </Window.InputBindings>
     <Grid>
         <Grid.RowDefinitions>
@@ -46,17 +45,16 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0"
-              Background="SeaGreen">
+              Background="SeaGreen" Grid.ColumnSpan="2">
 
             <Button Command="ApplicationCommands.Open"
                     Width="60"
                     Height="60"
-                    Background="SeaGreen" 
                     Content="📂"
                     FontSize="40"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    Margin="10, 10">
+                    Margin="10,10,0,0">
             </Button>
             <Button Command="MediaCommands.Play"
                     Width="60"
@@ -65,7 +63,7 @@
                     FontSize="40"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    Margin="80,10">
+                    Margin="80,10,0,0">
             </Button>
             <Button Command="MediaCommands.Pause"
                     Width="60"
@@ -74,7 +72,7 @@
                     FontSize="40"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    Margin="150,10">
+                    Margin="155,10,0,0">
             </Button>
             <TextBox x:Name="Speed_Textbox"
                 FontSize="35"
@@ -91,15 +89,20 @@
                     Margin="315,10,0,0"
                     >
             </Button>
+            <Label x:Name="lab_test"
+                   Content="None"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Top"
+                   Foreground="White"
+                   FontSize="35"/>
         </Grid>
 
         <MediaElement Name="mePlayer"
-                      Grid.Row="1"
                       LoadedBehavior="Manual"
-                      Stretch="None" />
+                      Stretch="None" Margin="0,92,0,0" Grid.RowSpan="2" />
 
-        <StatusBar Grid.Row="1"
-                   Background="SeaGreen">
+        <StatusBar
+                   Background="SeaGreen" Margin="0,92,0,0" Grid.RowSpan="2">
             <StatusBar.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Grid>

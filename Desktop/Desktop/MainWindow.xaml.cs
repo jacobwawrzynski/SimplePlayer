@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,15 +26,24 @@ namespace Desktop
     {
         private bool mediaPlayerIsPlaying = false;
         private bool userIsDraggingSlider = false;
+        private bool isRunnig = true;
 
         public MainWindow()
         {
             InitializeComponent();
             this.Topmost = true;
+            if (!this.IsActive || !this.IsKeyboardFocused || !this.IsFocused)
+                Deactivated += MainWindow_Deactivated;
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Start();
+        }
+
+        private void MainWindow_Deactivated(object? sender, EventArgs e)
+        {
+            Activate();
+            Focus();
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -109,6 +119,39 @@ namespace Desktop
         private void FastForward_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             mePlayer.SpeedRatio = Convert.ToDouble(Speed_Textbox.Text);
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Thread thread = new Thread(KeyboardBackground);
+            thread.SetApartmentState(ApartmentState.STA);
+            //CheckForIllegalCrossThreadCalls = false;
+            thread.Start();
+        }
+
+        private void KeyboardBackground()
+        {
+            while (isRunnig)
+            {
+                Thread.Sleep(40); // for minimum CPU usage
+                if ((Keyboard.GetKeyStates(Key.F10) & KeyStates.Down) > 0)
+                {
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        lab_test.Content = "Pressed";
+                        mePlayer.SpeedRatio = Convert.ToDouble(Speed_Textbox.Text);
+                    });
+                }
+                else
+                {   // TO DO: Killing thread after closing application,
+                    // catch exception when speed in not correct format
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        lab_test.Content = "Chuja";
+
+                    });
+                }
+            }
         }
     }
 }
