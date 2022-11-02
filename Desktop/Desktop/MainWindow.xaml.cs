@@ -129,10 +129,6 @@ namespace Desktop
             {
                 mePlayer.SpeedRatio = Convert.ToDouble(Speed_Textbox.Text);
             }
-            else
-            {
-                lab_test.Content = "Speed musi być w formacie X.X";
-            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -157,10 +153,22 @@ namespace Desktop
                             {
                                 mePlayer.SpeedRatio = Convert.ToDouble(Speed_Textbox.Text);
                             }
-                            else
-                            {
-                                lab_test.Content = "Speed musi być w formacie 0.0";
-                            }
+                        });
+                    }
+
+                    if ((Keyboard.GetKeyStates(Key.F11) & KeyStates.Down) > 0)
+                    {
+                        this.Dispatcher.Invoke(() =>
+                        {
+                            mePlayer.Position += TimeSpan.FromSeconds(1);
+                        });
+                    }
+
+                    if ((Keyboard.GetKeyStates(Key.F9) & KeyStates.Down) > 0)
+                    {
+                        this.Dispatcher.Invoke(() =>
+                        {
+                            mePlayer.Position -= TimeSpan.FromSeconds(1);
                         });
                     }
 
@@ -180,5 +188,6 @@ namespace Desktop
             }
             
         }
+
     }
 }
