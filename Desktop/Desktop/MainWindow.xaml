@@ -90,11 +90,11 @@
                     >
             </Button>
             <Label x:Name="lab_test"
-                   Content="None"
+                   Content="Speed musi być w &#xD;&#xA;formacie 0.0"
                    HorizontalAlignment="Right"
                    VerticalAlignment="Top"
                    Foreground="White"
-                   FontSize="35"/>
+                   FontSize="20" Height="70" Width="200"/>
         </Grid>
 
         <MediaElement Name="mePlayer"

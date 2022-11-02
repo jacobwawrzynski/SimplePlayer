@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,6 +28,7 @@ namespace Desktop
         private bool mediaPlayerIsPlaying = false;
         private bool userIsDraggingSlider = false;
         private bool isRunnig = true;
+        private readonly Regex regex = new Regex("[0-9].[0-9]");
 
         public MainWindow()
         {
@@ -54,6 +56,11 @@ namespace Desktop
                 sliProgress.Maximum = mePlayer.NaturalDuration.TimeSpan.TotalSeconds;
                 sliProgress.Value = mePlayer.Position.TotalSeconds;
             }
+        }
+
+        private bool IsInputAllowed(string rgx)
+        {
+            return regex.IsMatch(rgx);
         }
 
         private void Open_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -118,40 +125,60 @@ namespace Desktop
 
         private void FastForward_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            mePlayer.SpeedRatio = Convert.ToDouble(Speed_Textbox.Text);
+            if (IsInputAllowed(Speed_Textbox.Text))
+            {
+                mePlayer.SpeedRatio = Convert.ToDouble(Speed_Textbox.Text);
+            }
+            else
+            {
+                lab_test.Content = "Speed musi być w formacie X.X";
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Thread thread = new Thread(KeyboardBackground);
             thread.SetApartmentState(ApartmentState.STA);
-            //CheckForIllegalCrossThreadCalls = false;
             thread.Start();
         }
 
         private void KeyboardBackground()
         {
-            while (isRunnig)
+            try
             {
-                Thread.Sleep(40); // for minimum CPU usage
-                if ((Keyboard.GetKeyStates(Key.F10) & KeyStates.Down) > 0)
+                while (isRunnig)
                 {
-                    this.Dispatcher.Invoke(() =>
+                    Thread.Sleep(40); // for minimum CPU usage
+                    if ((Keyboard.GetKeyStates(Key.F10) & KeyStates.Down) > 0)
                     {
-                        lab_test.Content = "Pressed";
-                        mePlayer.SpeedRatio = Convert.ToDouble(Speed_Textbox.Text);
-                    });
-                }
-                else
-                {   // TO DO: Killing thread after closing application,
-                    // catch exception when speed in not correct format
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        lab_test.Content = "Chuja";
+                        this.Dispatcher.Invoke(() =>
+                        {
+                            if (IsInputAllowed(Speed_Textbox.Text))
+                            {
+                                mePlayer.SpeedRatio = Convert.ToDouble(Speed_Textbox.Text);
+                            }
+                            else
+                            {
+                                lab_test.Content = "Speed musi być w formacie 0.0";
+                            }
+                        });
+                    }
 
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        if (!IsLoaded)
+                        {
+                            isRunnig = false;
+                        }
                     });
                 }
+                
             }
+            catch (TaskCanceledException)
+            {
+                isRunnig = false;
+            }
+            
         }
     }
 }
