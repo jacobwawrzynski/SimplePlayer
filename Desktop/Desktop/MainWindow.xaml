@@ -77,21 +77,15 @@
                     VerticalAlignment="Top"
                     Margin="155,10,0,0">
             </Button>
-            <TextBox x:Name="Speed_Textbox"
-                     Text="1.0"
+            <TextBox x:Name="CurrTime_Textbox"
+                     Text="00:00:00"
                 Grid.Column="0"
                      HorizontalAlignment="Left"
-                     Margin="230,25,0,10"
-                     FontSize="35"
+                     Margin="230,10,0,34"
+                     FontSize="25"
                 FontWeight="Bold"
-                Width="80"
+                Width="145"
                 />
-            <Label Content="PRĘDKOŚĆ" 
-                   x:Name="SpeedLabel"
-                   Foreground="White"
-                   FontWeight="Bold"
-                   Margin="230,-3,880,69"
-                   />
             <Button Command="MediaCommands.FastForward"
                     Width="60"
                     Height="60"
@@ -99,15 +93,9 @@
                     FontSize="40"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    Margin="325,10,0,0"
+                    Margin="385,10,0,0"
                     >
             </Button>
-            <Label x:Name="SpeedInfo"
-                   Content="Prędkość musi być w &#xA;formacie 0.0"
-                   HorizontalAlignment="Right"
-                   VerticalAlignment="Top"
-                   Foreground="White"
-                   FontSize="20" Height="70" Width="200" Margin="0,3,580,0"/>
         </Grid>
 
         <MediaElement Name="mePlayer"
@@ -126,8 +114,11 @@
                     </Grid>
                 </ItemsPanelTemplate>
             </StatusBar.ItemsPanel>
-            <StatusBarItem>
-                <TextBlock Name="lblProgressStatus">00:00:00</TextBlock>
+            <StatusBarItem Margin="0,-8,0,0">
+                <TextBlock Name="lblProgressStatus"
+                           Text="00:00:00"
+                           Foreground="White"
+                           FontSize="20" Height="28"></TextBlock>
             </StatusBarItem>
             <StatusBarItem Grid.Row="1" 
                            HorizontalContentAlignment="Stretch">

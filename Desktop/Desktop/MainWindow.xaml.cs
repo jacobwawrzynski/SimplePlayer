@@ -28,7 +28,7 @@ namespace Desktop
         private bool mediaPlayerIsPlaying = false;
         private bool userIsDraggingSlider = false;
         private bool isRunnig = true;
-        private readonly Regex regex = new Regex("[0-9].[0-9]");
+        private readonly Regex regex = new Regex("[0-9][0-9]:[0-9][0-9]:[0-9][0-9]");
 
         public MainWindow()
         {
@@ -125,9 +125,9 @@ namespace Desktop
 
         private void FastForward_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            if (IsInputAllowed(Speed_Textbox.Text))
+            if (IsInputAllowed(CurrTime_Textbox.Text))
             {
-                mePlayer.SpeedRatio = Convert.ToDouble(Speed_Textbox.Text);
+                mePlayer.Position = TimeSpan.Parse(CurrTime_Textbox.Text);
             }
         }
 
@@ -145,18 +145,23 @@ namespace Desktop
                 while (isRunnig)
                 {
                     Thread.Sleep(40); // for minimum CPU usage
-                    if ((Keyboard.GetKeyStates(Key.F10) & KeyStates.Down) > 0)
+                    if ((Keyboard.GetKeyStates(Key.F6) & KeyStates.Down) > 0)
                     {
                         this.Dispatcher.Invoke(() =>
                         {
-                            if (IsInputAllowed(Speed_Textbox.Text))
-                            {
-                                mePlayer.SpeedRatio = Convert.ToDouble(Speed_Textbox.Text);
-                            }
+                            mePlayer.Pause();
                         });
                     }
 
-                    if ((Keyboard.GetKeyStates(Key.F11) & KeyStates.Down) > 0)
+                    if ((Keyboard.GetKeyStates(Key.F5) & KeyStates.Down) > 0)
+                    {
+                        this.Dispatcher.Invoke(() =>
+                        {
+                            mePlayer.Play();
+                        });
+                    }
+
+                    if ((Keyboard.GetKeyStates(Key.F7) & KeyStates.Down) > 0)
                     {
                         this.Dispatcher.Invoke(() =>
                         {
@@ -164,13 +169,38 @@ namespace Desktop
                         });
                     }
 
-                    if ((Keyboard.GetKeyStates(Key.F9) & KeyStates.Down) > 0)
+                    if ((Keyboard.GetKeyStates(Key.F8) & KeyStates.Down) > 0)
                     {
                         this.Dispatcher.Invoke(() =>
                         {
                             mePlayer.Position -= TimeSpan.FromSeconds(1);
                         });
                     }
+
+                    if ((Keyboard.GetKeyStates(Key.LeftCtrl) & KeyStates.Down) > 0 && (Keyboard.GetKeyStates(Key.D1) & KeyStates.Down) > 0)
+                    {
+                        this.Dispatcher.Invoke(() =>
+                        {
+                            mePlayer.SpeedRatio = 0.5;
+                        });
+                    }
+
+                    if ((Keyboard.GetKeyStates(Key.LeftCtrl) & KeyStates.Down) > 0 && (Keyboard.GetKeyStates(Key.D2) & KeyStates.Down) > 0)
+                    {
+                        this.Dispatcher.Invoke(() =>
+                        {
+                            mePlayer.SpeedRatio = 1;
+                        });
+                    }
+
+                    if ((Keyboard.GetKeyStates(Key.LeftCtrl) & KeyStates.Down) > 0 && (Keyboard.GetKeyStates(Key.D3) & KeyStates.Down) > 0)
+                    {
+                        this.Dispatcher.Invoke(() =>
+                        {
+                            mePlayer.SpeedRatio = 1.5;
+                        });
+                    }
+
 
                     this.Dispatcher.Invoke(() =>
                     {
