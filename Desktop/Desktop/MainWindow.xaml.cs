@@ -28,7 +28,7 @@ namespace Desktop
         private bool mediaPlayerIsPlaying = false;
         private bool userIsDraggingSlider = false;
         private bool isRunnig = true;
-        private readonly Regex regex = new Regex("[0-9][0-9]:[0-9][0-9]:[0-9][0-9]");
+        private readonly Regex regex = new Regex("[0-9][0-9]:[0-5][0-9]:[0-5][0-9]");
 
         public MainWindow()
         {
@@ -58,9 +58,14 @@ namespace Desktop
             }
         }
 
-        private bool IsInputAllowed(string rgx)
+        private bool IsCorrectFormat(string rgx)
         {
             return regex.IsMatch(rgx);
+        }
+
+        private bool IsCorrectTime(TimeSpan time)
+        {
+            return mePlayer.NaturalDuration.TimeSpan >= time;
         }
 
         private void Open_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -125,7 +130,9 @@ namespace Desktop
 
         private void FastForward_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            if (IsInputAllowed(CurrTime_Textbox.Text))
+            
+            if (IsCorrectFormat(CurrTime_Textbox.Text) 
+                && IsCorrectTime(TimeSpan.Parse(CurrTime_Textbox.Text)))
             {
                 mePlayer.Position = TimeSpan.Parse(CurrTime_Textbox.Text);
             }
@@ -165,7 +172,7 @@ namespace Desktop
                     {
                         this.Dispatcher.Invoke(() =>
                         {
-                            mePlayer.Position += TimeSpan.FromSeconds(1);
+                            mePlayer.Position -= TimeSpan.FromSeconds(1);
                         });
                     }
 
@@ -173,7 +180,7 @@ namespace Desktop
                     {
                         this.Dispatcher.Invoke(() =>
                         {
-                            mePlayer.Position -= TimeSpan.FromSeconds(1);
+                            mePlayer.Position += TimeSpan.FromSeconds(1);
                         });
                     }
 
