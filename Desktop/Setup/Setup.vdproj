@@ -13,6 +13,12 @@
 "SccProvider" = "8:"
     "Hierarchy"
     {
+        "Entry"
+        {
+        "MsmKey" = "8:_386ED181F6864DD28258D558F4BBDFF0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -31,6 +37,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -47,6 +69,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -64,10 +102,40 @@
         {
             "LaunchCondition"
             {
+                "{A06ECF26-33A3-4562-8140-9B0E340D4F24}:_F00B1731593C4818B8E74425555AD7B1"
+                {
+                "Name" = "8:.NET Core"
+                "Message" = "8:[VSDNETCOREMSG]"
+                "AllowLaterVersions" = "11:FALSE"
+                "InstallUrl" = "8:https://dotnet.microsoft.com/download/dotnet-core/[NetCoreVerMajorDotMinor]"
+                "IsNETCore" = "11:TRUE"
+                "Architecture" = "2:0"
+                "Runtime" = "2:0"
+                }
             }
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_386ED181F6864DD28258D558F4BBDFF0"
+            {
+            "SourcePath" = "8:..\\Desktop\\spicon.ico"
+            "TargetName" = "8:spicon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_340AE639BCF54C86B5B721E38EC768C3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -123,7 +191,7 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Setup"
+        "ProductName" = "8:SimplePlayer"
         "ProductCode" = "8:{E87ECC4D-EF8C-42FF-A768-AABF29EB78B7}"
         "PackageCode" = "8:{43FD38F6-4F4D-40D8-B898-E34BFCADC224}"
         "UpgradeCode" = "8:{C8F375AA-FA40-45A0-961E-4631868E314E}"
@@ -131,18 +199,18 @@
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "InstallAllUsers" = "11:FALSE"
+        "InstallAllUsers" = "11:TRUE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Default Company Name"
+        "Manufacturer" = "8:jacobwawrzynski"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:Setup"
+        "Title" = "8:SimplePlayer"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Default Company Name"
+        "ARPCONTACT" = "8:jacobwawrzynski"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_386ED181F6864DD28258D558F4BBDFF0"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -245,6 +313,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D0DFC8B645C6481EAD1490D277665C54"
+            {
+            "Name" = "8:SimplePlayerShort"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_AAE4634F191E4E4E96F95B9389D82673"
+            "Folder" = "8:_5BA49CD2AB52440E9732BAF00CFE4629"
+            "WorkingFolder" = "8:_5BA49CD2AB52440E9732BAF00CFE4629"
+            "Icon" = "8:_386ED181F6864DD28258D558F4BBDFF0"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
@@ -646,7 +728,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_35154B697A924B2F9DA51B2736B3254B"
             {
-            "SourcePath" = "8:"
+            "SourcePath" = "8:..\\Desktop\\obj\\Release\\net6.0-windows\\Desktop.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_340AE639BCF54C86B5B721E38EC768C3"
@@ -666,6 +748,34 @@
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:Release|Any CPU"
             "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{09CA301B-0952-4BC1-99A6-B30FE918150F}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_AAE4634F191E4E4E96F95B9389D82673"
+            {
+            "SourcePath" = "8:..\\Desktop\\obj\\Release\\net6.0-windows\\apphost.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_340AE639BCF54C86B5B721E38EC768C3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:Release|Any CPU"
+            "OutputGroupCanonicalName" = "8:PublishItems"
             "OutputProjectGuid" = "8:{09CA301B-0952-4BC1-99A6-B30FE918150F}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
