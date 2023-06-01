@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desktop", "Desktop\Desktop.
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{778259D0-29B4-41E3-9331-0D990D1C8DBF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplePlayer.NETFramework", "SimplePlayer.NETFramework\SimplePlayer.NETFramework.csproj", "{EF10C258-7BBC-4C24-A150-C26B7C49AFA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{09CA301B-0952-4BC1-99A6-B30FE918150F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{778259D0-29B4-41E3-9331-0D990D1C8DBF}.Debug|Any CPU.ActiveCfg = Debug
 		{778259D0-29B4-41E3-9331-0D990D1C8DBF}.Release|Any CPU.ActiveCfg = Release
+		{EF10C258-7BBC-4C24-A150-C26B7C49AFA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF10C258-7BBC-4C24-A150-C26B7C49AFA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF10C258-7BBC-4C24-A150-C26B7C49AFA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF10C258-7BBC-4C24-A150-C26B7C49AFA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

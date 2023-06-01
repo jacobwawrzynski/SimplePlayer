@@ -131,7 +131,7 @@ namespace Desktop
         private void FastForward_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             
-            if (IsCorrectFormat(CurrTime_Textbox.Text) 
+            if (IsCorrectFormat(CurrTime_Textbox.Text)
                 && IsCorrectTime(TimeSpan.Parse(CurrTime_Textbox.Text)))
             {
                 mePlayer.Position = TimeSpan.Parse(CurrTime_Textbox.Text);
